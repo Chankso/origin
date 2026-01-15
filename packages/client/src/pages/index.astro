@@ -1,5 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import logo from "../../public/origin-logo-no-fill.svg";
+import georgianFlag from "../../public/flags/georgia.svg";
+import russianFlag from "../../public/flags/russia.svg";
+import ukFlag from "../../public/flags/uk.svg";
 const pages = ["Home", "Home2", "Home3", "Home4"];
 ---
 
@@ -132,19 +136,11 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
 <BaseLayout>
   <main class="Content">
     <div class="Loading-Screen">
-      <img
-        class="Logo"
-        src="../../public/origin-logo-no-fill.svg"
-        alt="Origin Tech Georgia"
-      />
+      <img class="Logo" src={logo.src} alt="Origin Tech Georgia" />
     </div>
     <div class="Center">
       <a class="Logo">
-        <img
-          class="Logo-Image"
-          src="../../public/origin-logo-no-fill.svg"
-          alt="Origin Tech Georgia"
-        />
+        <img class="Logo-Image" src={logo.src} alt="Origin Tech Georgia" />
       </a>
       <div class="Scroll-Icons">
         {
@@ -159,11 +155,7 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
       <div class="Language-ControlWrapper">
         <div class="Language-Control">
           <label class="Language-Item" data-language-english>
-            <img
-              class="Language-Flag"
-              src="../../public/flags/uk.svg"
-              alt="UK Flag"
-            />
+            <img class="Language-Flag" src={ukFlag.src} alt="UK Flag" />
             <input
               class="Language-Radio"
               type="radio"
@@ -173,7 +165,7 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
           <label class="Language-Item" data-language-english>
             <img
               class="Language-Flag"
-              src="../../public/flags/georgia.svg"
+              src={georgianFlag.src}
               alt="Georgian Flag"
             />
             <input
@@ -185,7 +177,7 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
           <label class="Language-Item" data-language-english>
             <img
               class="Language-Flag"
-              src="../../public/flags/russia.svg"
+              src={russianFlag.src}
               alt="Russian Flag"
             />
             <input
