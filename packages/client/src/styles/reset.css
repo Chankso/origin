@@ -18,6 +18,7 @@
     font-size: 16px;
     line-height: 1;
     interpolate-size: allow-keywords;
+    scrollbar-gutter: hidden;
   }
 
   [hidden] {

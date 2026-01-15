@@ -1,5 +1,493 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const pages = ["Home", "Home2", "Home3", "Home4"];
 ---
 
-<BaseLayout> Hi </BaseLayout>
+<script>
+  // Loading Screen
+
+  // const leftWindow = document.querySelector(
+  //   "[data-window-left]"
+  // ) as HTMLElement | null;
+  // const rightWindow = document.querySelector(
+  //   "[data-window-right]"
+  // ) as HTMLElement | null;
+
+  // const centerLine = document.querySelector(
+  //   "[data-center-line]"
+  // ) as HTMLElement | null;
+  // if (leftWindow && rightWindow && centerLine) {
+  //   setTimeout(() => {
+  //     leftWindow.style.marginLeft = "0vw";
+  //     rightWindow.style.marginRight = "0vw";
+
+  //     setTimeout(() => {
+  //       centerLine.classList.remove("--hidden");
+  //     }, 750);
+  //   }, 1000);
+  // }
+</script>
+
+<script>
+  // Language controller
+
+  const languageButtons = document.querySelectorAll("[data-language-item]");
+
+  if (languageButtons.length !== 0) {
+    //
+  }
+</script>
+
+<script>
+  // Page controller
+  const scrollIcons = document.querySelectorAll("[data-scroll-icon]");
+  const leftBlock = document.querySelector(
+    "[data-block-left]"
+  ) as HTMLElement | null;
+  const rightBlock = document.querySelector(
+    "[data-block-right]"
+  ) as HTMLElement | null;
+  let activePage = 0;
+  if (leftBlock && rightBlock && scrollIcons.length !== 0) {
+    const ScrollToPage = () => {
+      leftBlock.style.marginTop = `-${activePage * 100}vh`;
+      rightBlock.style.marginTop = `-${(3 - activePage) * 100}vh`;
+
+      scrollIcons.forEach((el) => {
+        el.classList.remove("--active");
+      });
+      scrollIcons[activePage].classList.add("--active");
+    };
+    ScrollToPage();
+
+    leftBlock.style.transition = "margin-top 0.5s ease-in-out";
+    rightBlock.style.transition = "margin-top 0.5s ease-in-out";
+    scrollIcons.forEach((element: Element, index) => {
+      if (element.parentElement) {
+        element.parentElement!.addEventListener("click", () => {
+          activePage = index;
+          ScrollToPage();
+        });
+      }
+    });
+    window.addEventListener("keydown", (ev) => {
+      switch (ev.key) {
+        case "ArrowDown":
+          {
+            if (activePage < 3) {
+              activePage++;
+              ScrollToPage();
+            } else {
+              activePage = 0;
+              ScrollToPage();
+            }
+          }
+          break;
+        case "ArrowUp":
+          {
+            if (activePage > 0) {
+              activePage--;
+              ScrollToPage();
+            } else {
+              activePage = 3;
+              ScrollToPage();
+            }
+          }
+          break;
+      }
+    });
+
+    const handleScroll = (ev: WheelEvent) => {
+      {
+        window.removeEventListener("wheel", handleScroll);
+        const direction = ev.deltaY > 0 ? "down" : "up";
+        if (direction === "down") {
+          if (activePage < 3) {
+            activePage++;
+            ScrollToPage();
+          } else {
+            activePage = 0;
+            ScrollToPage();
+          }
+        } else if (direction === "up") {
+          if (activePage > 0) {
+            activePage--;
+            ScrollToPage();
+          } else {
+            activePage = 3;
+            ScrollToPage();
+          }
+        }
+
+        setTimeout(() => {
+          window.addEventListener("wheel", handleScroll);
+        }, 300);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll);
+  }
+</script>
+
+<BaseLayout>
+  <main class="Content">
+    <div class="Loading-Screen">
+      <img
+        class="Logo"
+        src="../../public/origin-logo-no-fill.svg"
+        alt="Origin Tech Georgia"
+      />
+    </div>
+    <div class="Center --hidden" data-center-line>
+      <a href="/" class="Logo">
+        <img
+          class="Logo-Image"
+          src="../../public/origin-logo-no-fill.svg"
+          alt="Origin Tech Georgia"
+        />
+      </a>
+      <div class="Scroll-Icons">
+        {
+          pages.map((label) => (
+            <span class="Scroll-IconWrapper ">
+              <span class="Scroll-Text">{label}</span>
+              <button class="Scroll-Icon" data-scroll-icon />
+            </span>
+          ))
+        }
+      </div>
+      <div class="Language-ControlWrapper">
+        <div class="Language-Control">
+          <label class="Language-Item" data-language-english>
+            <img
+              class="Language-Flag"
+              src="../../public/flags/uk.svg"
+              alt="UK Flag"
+            />
+            <input
+              class="Language-Radio"
+              type="radio"
+              name="language-control"
+            />
+          </label>
+          <label class="Language-Item" data-language-english>
+            <img
+              class="Language-Flag"
+              src="../../public/flags/georgia.svg"
+              alt="Georgian Flag"
+            />
+            <input
+              class="Language-Radio"
+              type="radio"
+              name="language-control"
+            />
+          </label>
+          <label class="Language-Item" data-language-english>
+            <img
+              class="Language-Flag"
+              src="../../public/flags/russia.svg"
+              alt="Russian Flag"
+            />
+            <input
+              class="Language-Radio"
+              type="radio"
+              name="language-control"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="Half-Content left" data-window-left>
+      <div class="Content-Block" data-block-left>
+        <h1 class="Content-Heading">Services</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block --inverted">
+        <h1 class="Content-Heading">Page 2 Left</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block">
+        <h1 class="Content-Heading">Page 3 Left</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block --inverted">
+        <h1 class="Content-Heading">Page 4 Left</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+    </div>
+
+    <div class="Half-Content right" data-window-right>
+      <div class="Content-Block" data-block-right>
+        <h1 class="Content-Heading">Page 4 Right</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block --inverted">
+        <h1 class="Content-Heading">Page 3 Right</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block">
+        <h1 class="Content-Heading">Page 2 Right</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+      <div class="Content-Block --inverted">
+        <h1 class="Content-Heading">Products</h1>
+        <p class="Content-Body">
+          Unde ipsam quae quisquam. Occaecati qui aut dolore fugiat corporis id
+          in voluptas. Enim tenetur voluptate reiciendis ipsa magnam aut qui et.
+        </p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  @keyframes left-slide {
+    0% {
+      margin-left: -50vw;
+    }
+    50% {
+      margin-left: -50vw;
+    }
+    100% {
+      margin-left: 0vw;
+    }
+  }
+  @keyframes right-slide {
+    0% {
+      margin-right: -50vw;
+    }
+    50% {
+      margin-right: -50vw;
+    }
+    100% {
+      margin-right: 0vw;
+    }
+  }
+
+  @keyframes show-center {
+    0% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100%: {
+      opacity: 1;
+    }
+  }
+  .Content {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .Loading-Screen {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  .Separator {
+    position: absolute;
+  }
+
+  .Half-Content {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    &.left {
+      left: 0;
+      border-right: solid 1px white;
+      animation: left-slide 1.5s ease-out;
+    }
+    &.right {
+      border-left: solid 1px white;
+      right: 0;
+      animation: right-slide 1.5s ease-out;
+    }
+  }
+
+  .Content-Block {
+    --text-color: var(--accent-primary);
+    background-color: var(--bg-main);
+    height: 100%;
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+
+    &.--inverted {
+      background-color: var(--accent-primary);
+      --text-color: var(--bg-main);
+    }
+  }
+
+  .Content-Heading {
+    font-size: 64px;
+  }
+
+  .Content-Body {
+    font-size: 24px;
+    text-align: center;
+    padding-inline: 96px;
+  }
+
+  .Center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    padding-block: 64px;
+    justify-content: space-between;
+    align-items: center;
+    animation: show-center 2s ease-in-out;
+  }
+
+  .Logo {
+    z-index: 1;
+    width: 300px;
+    margin-inline-start: 6px;
+  }
+  .Logo-Image {
+    --left-color: #db4a25;
+    --right-color: #131831;
+    width: 100%;
+  }
+  .Language-ControlWrapper {
+    z-index: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+    height: 85px;
+    width: 120px;
+    margin-bottom: 24px;
+  }
+
+  .Language-Control {
+    overflow: hidden;
+    position: relative;
+    gap: 12px;
+    display: flex;
+    flex-direction: column-reverse;
+
+    &:hover {
+      overflow: visible;
+      & .Language-Flag {
+        filter: brightness(50%);
+      }
+      & .Language-Flag:hover {
+        filter: none;
+      }
+    }
+  }
+  .Language-Item {
+    height: 80px;
+    width: 120px;
+    order: 1;
+    &:has(input:checked) {
+      order: 0;
+    }
+  }
+  .Language-Flag {
+    height: 80px;
+    width: 120px;
+  }
+
+  .Scroll-IconWrapper {
+    position: relative;
+    padding: 4px;
+    padding-inline: 8px;
+
+    &:hover {
+      cursor: pointer;
+
+      & .Scroll-Text {
+        visibility: visible;
+      }
+
+      & .Scroll-Icon {
+        transform: rotate(135deg);
+      }
+    }
+  }
+  .Scroll-Icons {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 128px;
+  }
+
+  .Scroll-Icon {
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-main);
+    /*
+    background: linear-gradient(45deg, var(--accent-primary), 
+    var(--accent-primary) 50%, var(--bg-main) 50%, var(--bg-main)); */
+    transform: rotate(45deg);
+    transition: 0.2s ease-out;
+    border: 1px solid white;
+
+    &.--active {
+      background-color: var(--accent-primary);
+      transform: rotate(135deg);
+    }
+  }
+  .Scroll-Text {
+    position: absolute;
+    right: 24px;
+    visibility: hidden;
+  }
+
+  .Main-Button {
+    --bg: var(--bg-main);
+    padding: 128px;
+    font-size: xx-large;
+    border-radius: 24px;
+
+    &.type-invert {
+      --bg: var(--accent-primary);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+</style>
