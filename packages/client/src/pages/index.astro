@@ -138,8 +138,8 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
         alt="Origin Tech Georgia"
       />
     </div>
-    <div class="Center --hidden" data-center-line>
-      <a href="/" class="Logo">
+    <div class="Center">
+      <a class="Logo">
         <img
           class="Logo-Image"
           src="../../public/origin-logo-no-fill.svg"
@@ -314,10 +314,6 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
     z-index: -1;
   }
 
-  .Separator {
-    position: absolute;
-  }
-
   .Half-Content {
     position: absolute;
     bottom: 0;
@@ -384,8 +380,6 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
     margin-inline-start: 6px;
   }
   .Logo-Image {
-    --left-color: #db4a25;
-    --right-color: #131831;
     width: 100%;
   }
   .Language-ControlWrapper {
@@ -419,6 +413,7 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
     height: 80px;
     width: 120px;
     order: 1;
+    cursor: pointer;
     &:has(input:checked) {
       order: 0;
     }
@@ -474,20 +469,5 @@ const pages = ["Home", "Home2", "Home3", "Home4"];
     position: absolute;
     right: 24px;
     visibility: hidden;
-  }
-
-  .Main-Button {
-    --bg: var(--bg-main);
-    padding: 128px;
-    font-size: xx-large;
-    border-radius: 24px;
-
-    &.type-invert {
-      --bg: var(--accent-primary);
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 </style>
