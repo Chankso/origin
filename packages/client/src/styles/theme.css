@@ -1,61 +1,61 @@
 :root {
   /* Backgrounds */
-  --bg-main: #ffffff;
-  --bg-surface: #f6f6f6;
-  --bg-elevated: #eeeeee;
+  --bg-main: #131831;
+  --bg-surface: #151a30;
+  --bg-elevated: #1a203c;
 
   /* Text */
-  --text-primary: #121212;
-  --text-secondary: #4a4a4a;
-  --text-muted: #7a7a7a;
-  --text-inverse: #ffffff;
+  --text-primary: #f5f5f5;
+  --text-secondary: #cfcfcf;
+  --text-muted: #9a9a9a;
+  --text-inverse: #121212;
 
   /* Brand */
-  --accent-primary: #e04a23;
-  --accent-hover: #c83f1d;
-  --accent-soft: #fde6df;
+  --accent-primary: #db4a25; /* same orange */
+  --accent-hover: #ff5a30;
+  --accent-soft: rgba(224, 74, 35, 0.15);
 
   /* Borders & Dividers */
-  --border-light: #e0e0e0;
-  --border-strong: #cfcfcf;
+  --border-light: #2a2a2a;
+  --border-strong: #3a3a3a;
 
   /* UI States */
-  --success: #2e8b57;
-  --warning: #f4a000;
-  --error: #c0392b;
+  --success: #3cb371;
+  --warning: #ffb020;
+  --error: #e74c3c;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.7);
 
-  [data-theme="dark"] {
+  [data-theme="light"] {
     /* Backgrounds */
-    --bg-main: #0f0f0f;
-    --bg-surface: #161616;
-    --bg-elevated: #1e1e1e;
+    --bg-main: #ffffff;
+    --bg-surface: #dff4f8;
+    --bg-elevated: #bbe2e7;
 
     /* Text */
-    --text-primary: #f5f5f5;
-    --text-secondary: #cfcfcf;
-    --text-muted: #9a9a9a;
-    --text-inverse: #121212;
+    --text-primary: #121212;
+    --text-secondary: #4a4a4a;
+    --text-muted: #7a7a7a;
+    --text-inverse: #ffffff;
 
     /* Brand */
-    --accent-primary: #e04a23; /* same orange */
-    --accent-hover: #ff5a30;
-    --accent-soft: rgba(224, 74, 35, 0.15);
+    --accent-primary: #db4a25;
+    --accent-hover: #c83f1d;
+    --accent-soft: #fde6df;
 
     /* Borders & Dividers */
-    --border-light: #2a2a2a;
-    --border-strong: #3a3a3a;
+    --border-light: #e0e0e0;
+    --border-strong: #cfcfcf;
 
     /* UI States */
-    --success: #3cb371;
-    --warning: #ffb020;
-    --error: #e74c3c;
+    --success: #2e8b57;
+    --warning: #f4a000;
+    --error: #c0392b;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
-    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.7);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }

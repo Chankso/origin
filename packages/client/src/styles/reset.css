@@ -14,11 +14,11 @@
 
   :root {
     box-sizing: border-box;
-    scrollbar-gutter: stable;
     font-family: sans-serif;
     font-size: 16px;
     line-height: 1;
     interpolate-size: allow-keywords;
+    scrollbar-gutter: hidden;
   }
 
   [hidden] {
