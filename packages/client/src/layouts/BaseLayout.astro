@@ -1,12 +1,13 @@
 ---
 import "../styles/reset.css";
 import "../styles/theme.css";
+import "../styles/fonts.css";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/origin/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Origin</title>
@@ -18,7 +19,7 @@ import "../styles/theme.css";
 
 <style>
   .BaseLayout {
-    background-color: black;
+    background-color: var(--bg-main);
     color: var(--text-primary);
   }
 </style>

@@ -1,8 +1,8 @@
 :root {
   /* Backgrounds */
-  --bg-main: #131831;
-  --bg-surface: #151a30;
-  --bg-elevated: #1a203c;
+  --bg-main: rgb(197, 193, 188);
+  --bg-surface: #484a4e;
+  --bg-elevated: #494a4b;
 
   /* Text */
   --text-primary: #f5f5f5;

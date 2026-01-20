@@ -1,0 +1,224 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<script></script>
+
+<BaseLayout>
+  <div class="Background">
+    <div class="Grid">
+      <div class="cell"><div class="sub-cell"></div></div>
+      <div class="cell">
+        <div class="sub-cell"></div>
+      </div>
+      <div class="cell"><div class="sub-cell"></div></div>
+      <div class="cell left">
+        <div class="sub-cell"></div>
+      </div>
+      <div class="cell center"></div>
+      <div class="cell right">
+        <div class="sub-cell"></div>
+      </div>
+      <div class="cell"><div class="sub-cell"></div></div>
+      <div class="cell">
+        <div class="sub-cell"></div>
+      </div>
+      <div class="cell"><div class="sub-cell"></div></div>
+    </div>
+    <div class="Logo-Wrapper">
+      <div class="Logo">
+        <span class="Logo-O">O</span>
+        <div class="Logo-Test">
+          <div class="Logo-SubTest">
+            <span class="Logo-Rest">RIGIN</span>
+            <div class="Logo-Subheader">TECH GEORGIA</div>
+          </div>
+        </div>
+        <div class="Logo-Curtain"></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .Background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d0d0d;
+  }
+
+  @keyframes gridLines {
+    to {
+      background-size:
+        var(--gap) 100%,
+        var(--gap) 100%,
+        100% var(--gap),
+        100% var(--gap);
+    }
+  }
+
+  @keyframes hardGrid {
+    to {
+      background: unset;
+      background-color: var(--bg);
+      pointer-events: unset;
+    }
+  }
+  .Grid {
+    --line: #656565;
+    --bg: #656565;
+    --gap: 1px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 1px;
+    background:
+      linear-gradient(var(--line) 0 0) 20% 0 / var(--gap) 0% no-repeat,
+      linear-gradient(var(--line) 0 0) 80% 100% / var(--gap) 0% no-repeat,
+      linear-gradient(var(--line) 0 0) 0 calc(20% - 0.5px) / 0% var(--gap)
+        no-repeat,
+      linear-gradient(var(--line) 0 0) 100% calc(80% + 0.5px) / 0% var(--gap)
+        no-repeat;
+    pointer-events: none;
+    animation:
+      hardGrid 1.6s steps(1, end) forwards,
+      gridLines 1.6s ease-out;
+    transition: 400ms;
+
+    &:has(.center:hover) {
+      grid-template-rows: 0.75fr 2.5fr 0.75fr;
+      grid-template-columns: 0.75fr 2.5fr 0.75fr;
+    }
+    &:has(.left:hover) {
+      grid-template-columns: 1.5fr 2.5fr 1fr;
+    }
+    &:has(.right:hover) {
+      grid-template-columns: 1fr 2.5fr 1.5fr;
+    }
+  }
+  .cell {
+    background-color: #0d0d0d;
+    color: #fff;
+    display: grid;
+    place-items: center;
+  }
+
+  .center {
+    font-family: "Origin", sans-serif;
+    font-size: 12em;
+    color: var(--accent-primary);
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .left,
+  .right {
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @keyframes rotation {
+    0% {
+      rotate: 180deg;
+    }
+    100% {
+      rotate: 0deg;
+    }
+  }
+
+  /* Testing ground */
+
+  .Logo-Wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .Logo {
+    font-family: "Origin", sans-serif;
+    font-size: 12em;
+    color: var(--accent-primary);
+    user-select: none;
+
+    display: flex;
+
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .Logo-O {
+    margin-left: auto;
+  }
+  .Logo-Subheader {
+    font-size: 0.25em;
+    margin-left: auto;
+    text-wrap: nowrap;
+  }
+  .Logo-Test {
+    position: relative;
+    display: flex;
+  }
+  .Logo-SubTest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  @keyframes showLogo {
+    from {
+      grid-column: 2;
+    }
+    to {
+      grid-column: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      color: #0d0d0d;
+    }
+    to {
+      color: var(--accent-primary);
+      pointer-events: unset;
+    }
+  }
+
+  .sub-cell {
+    display: grid;
+    place-items: center;
+    font-family: "Origin";
+    color: #0d0d0d;
+    font-size: xx-large;
+    width: 100%;
+    height: 100%;
+    --line: #656565;
+    --gap: 1px;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--line) 0 0) 80% 100% / var(--gap) 0% no-repeat,
+      linear-gradient(var(--line) 0 0) 20% 0 / var(--gap) 0% no-repeat,
+      linear-gradient(var(--line) 0 0) 0 calc(20% - 0.5px) / 0% var(--gap)
+        no-repeat,
+      linear-gradient(var(--line) 0 0) 100% calc(80% + 0.5px) / 0% var(--gap)
+        no-repeat;
+    animation:
+      gridLines 1.6s ease-out 1.6s forwards,
+      fadeIn 1.6s ease-in-out 1.6s forwards;
+  }
+  .cell:nth-child(odd) {
+  }
+</style>
